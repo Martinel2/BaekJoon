@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int dfs(int worm[][101], bool *visit, int w1, int N)
+{
+	int sum = 1; // 감염수 증가 
+	visit[w1] = true; //연결확인 
+	for(int i = 1; i<N; i++)
+	{
+		if(worm[w1][i] || worm[i][w1]) // 2~N번째 컴퓨터와 연결되어있음 
+		{
+			if(!visit[i]) // 방문을 안했음 
+				sum = sum + dfs(worm,visit,i,N);
+		}
+			
+	}
+	
+	return sum;	
+		
+}
+
+int main()
+{
+	int N,C;
+	scanf("%d", &N);//컴퓨터의 수 
+	scanf("%d", &C);//연결쌍의 수 
+	
+	int worm[101][101] = {0,}; //컴퓨터 연결상태 
+	bool visit[101];//방문확인 
+
+	for(int i = 0; i<C; i++)
+	{
+		int fr,re;
+		scanf("%d %d", &fr,&re);//연결
+        fr = fr-1;
+        re = re-1;
+		worm[fr][re] = 1;
+	}
+	
+	int w1 = 0; //1번컴퓨터부터 
+	
+	printf("%d", dfs(worm, visit, w1, N)-1);//1번컴퓨터는 제외 
+	
+	return 0; 
+}
