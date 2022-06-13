@@ -20,13 +20,13 @@ public class set {
         			sett[x]=true;
         		}
         	}
-        	if(str.equals("remove"))
+        	else if(str.equals("remove"))
         	{
         		int x = Integer.parseInt(tk.nextToken());
         		if(sett[x])
         			sett[x] = false;
         	}
-        	if(str.equals("check"))
+        	else if(str.equals("check"))
         	{
         		int x = Integer.parseInt(tk.nextToken());
         		if(sett[x] == true)
@@ -36,12 +36,12 @@ public class set {
         		else if(!sett[x])
         			bw.write(0 + "\n");
         	}
-        	if(str.equals("toggle"))
+        	else if(str.equals("toggle"))
         	{
         		int x = Integer.parseInt(tk.nextToken());
         		sett[x] = !sett[x]; 
         	}
-        	if(str.equals("all"))
+        	else if(str.equals("all"))
         	{
         		Arrays.fill(sett, true);
         	}
