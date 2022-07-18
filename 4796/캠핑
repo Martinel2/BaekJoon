@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args)throws IOException{ 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder st = new StringBuilder();
+        StringTokenizer tk = new StringTokenizer(br.readLine(), " ");
+			
+        A = Integer.parseInt(tk.nextToken());
+		B = Integer.parseInt(tk.nextToken());
+        C = Integer.parseInt(tk.nextToken());
+            
+		while(A!=0 || B!=0 || C!=0)
+		{
+            long sum=0;
+			
+            while(C>=B)
+            {
+                sum+= A;
+                C-=B;
+            }
+            if(C<A)
+                sum+=C;
+            else
+                sum+=A;
+            
+            System.out.print("Case " + T + ": " + sum + "\n");
+            T++;
+            tk = new StringTokenizer(br.readLine(), " ");
+			
+		    A = Integer.parseInt(tk.nextToken());
+			B = Integer.parseInt(tk.nextToken());
+            C = Integer.parseInt(tk.nextToken());
+            
+        }
+    }
+    static int T=1;
+    static int A,B,C;
+    
+}
