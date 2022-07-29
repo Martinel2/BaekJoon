@@ -36,10 +36,12 @@ public class Main {
 		Arrays.sort(sum);
 		int k = 9;
 		
-		for(int i = 25; i>17; i--)
+		for(int i = 25; i>=0; i--)
 		{
 			max += k * sum[i];
 			k--;
+			if(k==0)
+				break;
 		}
 		System.out.print(max);
 	}
