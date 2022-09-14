@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 
-//1439 뒤집기
+//1439  뒤집기
 public class Main {
 	public static void main(String[] args)throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
