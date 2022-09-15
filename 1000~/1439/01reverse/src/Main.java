@@ -2,31 +2,28 @@ import java.io.*;
 import java.util.*;
 
 
-//1439  뒤집기
+//1439 뒤집기
 public class Main {
 	public static void main(String[] args)throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String[] s = br.readLine().split("1");
+		String s = br.readLine();
+		int slen = s.length();
 		int cnt0 = 0;
 		int cnt1 = 0;
-		String str = "";
-		
-		for(int i = 0; i<s.length; i++)
-		{
-			if(s[i].contains("0"))
-				if(!str.contains("0"))
-					cnt0++;
-				else
-					continue;
-			else
-				if(!str.contains("1"))
-					cnt1++;
-			str = s[i];
-			
-		}
-		if(cnt0>cnt1)
-			System.out.print(cnt1);
+		char[] arr = s.toCharArray();
+		if(arr[0] == '1')
+			cnt1++;
 		else
-			System.out.print(cnt0);
+			cnt0++;
+		for(int i = 1; i<slen; i++)
+		{
+			if(arr[i-1] == '0' && arr[i] == '1')
+				cnt1++;
+			else if(arr[i-1] == '1' && arr[i] == '0')
+				cnt0++;
+			else
+				continue;
+		}
+		System.out.print(Math.min(cnt0, cnt1));
 	}
 }
