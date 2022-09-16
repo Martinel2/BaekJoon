@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 
-//11004 k번째 수
+//11004  k번째 수
 public class Main {
 	public static void main(String[] args)throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
