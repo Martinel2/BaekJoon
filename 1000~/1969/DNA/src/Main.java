@@ -16,12 +16,12 @@ public class Main {
 			s[i] = br.readLine().toCharArray();
 		
 		//세로줄로 보았을때 가장 빈번하게 나오는 알파벳 채택-같을시 알파벳기준 가장 빠른것
-		for(int i = 0; i<M; i++)//세로
+		for(int i = 0; i<M; i++)//가로
 		{
 			int[] alpa = new int[26];
-			int max = 1;
+			int max = 0;
 			char maxalpa = 'A';
-			for(int j = 0; j<N; j++)//가로
+			for(int j = 0; j<N; j++)//세로
 				alpa[s[j][i]-'A']++;
 				
 			for(int k = 0; k<26; k++)
