@@ -45,7 +45,6 @@ public class Main {
 			while(min +1 < max)
 			{
 				int mid = (max+min)/2;
-				System.out.println(max + " "  +min);
 				if(check(mid))
 					min = mid;
 				else
