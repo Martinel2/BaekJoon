@@ -1,0 +1,40 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+// 메모리 초과를 방지하기위해 전역변수로 설정
+int N[1000000];
+int M[1000000];
+int count[1000000];
+char buffer[1000000];
+
+int main() {
+	int T;
+	int i, j, k;
+
+	// 테스트케이스의 개수와 각 테스트케이스의 경우 입력받음
+	scanf("%d", &T);
+	for (i = 0; i < T; i++) {
+		scanf("%d %d", &N[i], &M[i]);
+	}
+	
+	for (i = 0; i < T; i++) {
+		// i번째 입력받은 숫자의 범위 내에서
+		for (j = N[i]; j < M[i] + 1; j++) {
+        
+			// 입력받은 숫자를 문자열로 변환
+			sprintf(buffer, "%d", j);
+            
+			for (k = 0; k < strlen(buffer); k++) {
+				// 각 자릿수의 숫자에 0이 있는지 확인
+				if (buffer[k] == '0')
+					count[i]++;	// 있으면 count
+			}
+		}
+	}
+
+	for (i = 0; i < T; i++) {
+		printf("%d\n", count[i]);
+	}
+
+	return 0;
+}
