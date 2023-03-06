@@ -33,26 +33,26 @@ public class Main {
 		for(int i = 1; i<=N; i++) {
 			non[i] += non[i-1];
 			if(non[i] == non[i-1]) { // 빠진 페이지 발견
-				if(mnn < mxn) { //이미 구간이 존재
+				if(mnn <= mxn) { //이미 구간이 존재
 					
-					if(i-mxn-1 > 2) // 3장 이상 차이나면 손해
+					if(non[i]-non[mxn] > 2) // 인쇄된 종이가 3장 이상이면 손해
 					{
 						ans += 5 + 2*(mxn-mnn+1);
 						mnn = i;
+						mxn = i;
 					}
 					else { // 2장 이내 차이면 구간 합치기
 						mxn = i;
 					}
 				}
 				else {
-					if(mnn > i)
-						mnn = i;
-					if(mxn < i)
-						mxn = i;
+					mnn = i;
+					mxn = i;
 				}
+				//System.out.println(mnn+"   "+mxn+"   "+ans);
 			}
 		}
-		if(mnn < mxn) {
+		if(mnn <= mxn) {
 			ans += 5 + 2*(mxn-mnn+1);
 		}
 		System.out.println(ans);
