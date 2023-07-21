@@ -38,26 +38,29 @@ public class Main {
 				dp[i-1] = Math.min(dp[i-1], cnt+1);
 		}
 		
-		int[] arr = new int[dp[1]+1];
-		int idx = 1;
-		int cnt = 0;
+		int[] arr = new int[dp[1]+1]; // dp[1]이 최소값. N도 저장해야하므로 +1
+		
+		//1부터 역으로 탐색해서 순서 구하기
+		int idx = 1; // 1부터 시작
+		int cnt = dp[1]; // 내림차순으로 저장하기 위해 끝에서부터 시작
+		
 		while(idx <= N) {
-			arr[cnt++] = idx;
+			arr[cnt--] = idx;
 			
-			if(idx * 3 <= N && dp[idx]-1 == dp[idx*3])
+			if(idx * 3 <= N && dp[idx]-1 == dp[idx*3]) // 3으로 곱하기
 				idx *= 3;
-			else if(idx * 2 <= N && dp[idx]-1 == dp[idx*2])
-				idx *= 2;	
-			else if(idx + 1 <= N && dp[idx]-1 == dp[idx+1])
+			else if(idx * 2 <= N && dp[idx]-1 == dp[idx*2]) //2로 곱하기
+				idx *= 2;	 
+			else if(idx + 1 <= N && dp[idx]-1 == dp[idx+1]) //1 더하기
 				idx += 1;
 			else
 				break;
 			
 		}
 		
-		
+		// 출력 //
 		System.out.println(dp[1]);
-		for(int i = dp[1]; i>=0; i--) {
+		for(int i = 0; i<=dp[1]; i++) {
 			System.out.print(arr[i]+ " ");
 		}
 	}
