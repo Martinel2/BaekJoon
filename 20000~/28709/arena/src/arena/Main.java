@@ -3,28 +3,34 @@ package arena;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.StringTokenizer;
 
 public class Main {
 	
 	static boolean solve(char[] s) {
 		int N = s.length;
-		if(s[0] == '*' || s[N-1] == '*') {
+		boolean haveStar = false;
+		for(int i = 0; i<N; i++) {
+			if(s[i] == '*') {
+				haveStar = true;
+				break;
+			}
+		}
+		if(haveStar) {
 			int cnt = 0;
 			for(int i = 0; s[i] != '*'; ++i) {
 				if(s[i] == ')') 
-					cnt--;
+					--cnt;
 				else
-					cnt++;
+					++cnt;
 				if(cnt < 0)
 					return false;
 			}
 			cnt = 0;
 			for(int i = N-1; s[i] != '*'; --i) {
 				if(s[i] == '(') 
-					cnt--;
+					--cnt;
 				else
-					cnt++;
+					++cnt;
 				if(cnt < 0)
 					return false;
 			}
@@ -34,30 +40,30 @@ public class Main {
 			return false;
 		int open = 0;
 		int close = 0;
-		for(int i = 0; i<N; i++) {
+		for(int i = 0; i<N; ++i) {
 			if(s[i] == '(')
-				open++;
+				++open;
 			else if(s[i] == ')')
-				close++;
+				++close;
 		}
 		if(open > N/2 || close > N/2)
 			return false;
 		
 		int cnt = 0;
-		for(int i = 0; i<N; i++) {
+		for(int i = 0; i<N; ++i) {
 			if(s[i] == '?')
 			{
 				if(open < N/2) {
 					s[i] = '('; 
-					open++;
+					++open;
 				}
 				else
 					s[i] = ')';
 			}
 			if(s[i] == '(')
-				cnt++;
+				++cnt;
 			else
-				cnt--;
+				--cnt;
 			if(cnt < 0)
 				return false;
 		}
