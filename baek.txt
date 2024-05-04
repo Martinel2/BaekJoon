@@ -1,4 +1,4 @@
-set GIT_COMMITTER_DATE="Mar 9 09:00:00 2024 +0900"
-git commit --amend --no-edit --date "Mar 9 09:00:00 2024 +0900"
+set GIT_COMMITTER_DATE="Apr 6 09:00:00 2024 +0900"
+git commit --amend --no-edit --date "Apr 6 09:00:00 2024 +0900"
 git rebase --continue
 git push -f --set-upstream origin master
